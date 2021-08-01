@@ -1,4 +1,6 @@
-# lbe2d
+# 2D Lattice-Boltzmann
+
+Interactive simulation of a 2D incompressible viscous fluid using the Lattice-Boltzmann D2Q9 method.dolphin 
 
 Requirements: qmake, libfftw3, Qt
 
