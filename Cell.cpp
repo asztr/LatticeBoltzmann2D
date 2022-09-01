@@ -30,25 +30,22 @@ double Cell::getFeq(int l) {
 	return w[l]*rho*(1.0 - 1.5*(u*u) + 3.0*(_eu) + 4.5*(_eu*_eu));
 }
 
-//es medio raro pasar _rho por aca.
 void Cell::setU(vec<double>& _u, double _rho) {
 	rho = _rho;
 	u = _u;
-	for(int l=0; l<Q_DIM; l++) //guarda que saqué esto
+	for(int l=0; l<Q_DIM; l++)
 		f[l] = getFeq(l);
 }
 
-//el uso de u es medio raro. se modifica para calcular getFeq.
-//pero despues se recalcula en updateRhoAndU (medio al pedo...)
 void Cell::addU(vec<double>& _u) {
 	u = u + _u;
-	for(int l=0; l<Q_DIM; l++) //guarda que saqué esto
+	for(int l=0; l<Q_DIM; l++)
 		f[l] = getFeq(l);
 }
 
 void Cell::multU(double factor) {
 	u = u*factor;
-	for(int l=0; l<Q_DIM; l++) //guarda que saqué esto
+	for(int l=0; l<Q_DIM; l++)
 		f[l] = getFeq(l);
 }
 
