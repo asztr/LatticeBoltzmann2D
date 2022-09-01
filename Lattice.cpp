@@ -180,7 +180,6 @@ void Lattice::relaxRho() {
 			}
 		//cout << rhoDiff << endl;
 	}
-	//en teoria no necesito modificar los valores de f
 	for (int i = 0; i < dim.x; i++)
 		for (int j = 0; j < dim.y; j++) {
 			(*grid)[i][j].rho = 1.0 + rho0[i][j];
@@ -232,7 +231,6 @@ void Lattice::advectParticles() {
 }
 
 void Lattice::swapGrids() {
-	//swap de los punteros a grids
 	CellGrid* gridAuxPointer;
 	gridAuxPointer = grid;
 	grid = gridTmp;
@@ -291,14 +289,14 @@ void Lattice::writeVorticity(string fileName, Space space) {
 	calcVorticity(space);
 
 	if (space == REAL_SPACE)
-		for(int i=0; i < dim.x; i++) { //habria que ver si se puede mantener el orden del for de f90
+		for(int i=0; i < dim.x; i++) {
 			for(int j=0; j < dim.y; j++)
 				file << real(wCoordSpace(i,j)) << " ";
 			file << endl;
 		}
 
 	if (space == FOURIER_SPACE)
-		for(int i=0; i < dim.x; i++) //habria que ver si se puede mantener el orden del for de f90
+		for(int i=0; i < dim.x; i++)
 			for(int j=0; j < dim.y/2 + 1; j++)
 				file << real(wFourierSpace(i,j)) << " " << imag(wFourierSpace(i,j)) << endl;
 	file.close();
@@ -354,7 +352,7 @@ void Lattice::introRandomFourierNoise(double cValue, int kmax) {
 				uFourierSpaceY(i,j) = Complex(0.0, 0.0);
 			}
 
-	backwardX.fft(uFourierSpaceX, uCoordSpaceX); //VER. CAPAZ QUE ES NORMALIZED
+	backwardX.fft(uFourierSpaceX, uCoordSpaceX);
 	backwardY.fft(uFourierSpaceY, uCoordSpaceY);
 
 	for(int i=0; i < dim.x; i++)
@@ -405,7 +403,6 @@ double Lattice::energy() {
 }
 
 double Lattice::energy(Space space) {
-	//hay un factor 4 entre las energias en los espacios real y fourier
 	if (space == FOURIER_SPACE) {
 		calcVorticity(FOURIER_SPACE);
 		double ret = 0.0;
