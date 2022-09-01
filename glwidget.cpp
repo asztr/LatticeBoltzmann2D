@@ -97,7 +97,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event) {
 		_pressed = mouse.pressedCell(cellPixelSize);
 	}
 	if (event->buttons() == Qt::LeftButton) {
-		QVector2D _delta = mouse.deltaPosition().normalized(); //habria que revisar la eficiencia de crear este objeto
+		QVector2D _delta = mouse.deltaPosition().normalized();
 		vec<double> _u(_delta.x(), _delta.y());
 		lattice.setU(_pressed.x(), _pressed.y(), _u);
 	}
@@ -116,7 +116,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event) {
 }
 
 void GLWidget::animate() {
-	if (drawMode == testParticles) //este if lo hice a los pedos. quiza no sea la mejor forma de hacerlo, ni el lugar ideal
+	if (drawMode == testParticles)
 		lattice.showParticles();
 	else
 		lattice.hideParticles();
