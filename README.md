@@ -2,6 +2,12 @@
 
 Interactive simulation of a 2D incompressible viscous fluid using the Lattice-Boltzmann D2Q9 method.
 
+<div align="center"
+
+<video src="https://user-images.githubusercontent.com/10238412/188178624-deeab462-2ffe-49c9-a36c-99017b388549.mp4" type="video/mp4;"></video>
+
+</div>
+
 ### Requirements
 ```
 qmake, libfftw3, libQt
